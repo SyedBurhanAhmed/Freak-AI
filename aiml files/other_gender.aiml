@@ -1,0 +1,77 @@
+<aiml version= "2.0">
+<!-- Format: GENDER OF <person> IS <gender> -->
+<category>
+    <pattern>GENDER OF * IS *</pattern>
+    <template>
+        Noted. <star index="1"/>'s gender is <star index="2"/>.
+        <think>
+            <set name="other_gender_person"><star index="1"/></set>
+            <set name="other_gender"><star index="2"/></set>
+        </think>
+    </template>
+</category>
+
+<!-- Format: <person>'s gender is <gender> -->
+<category>
+    <pattern>*'S GENDER IS *</pattern>
+    <template>
+        Got it. <star index="1"/>'s gender is <star index="2"/>.
+        <think>
+            <set name="other_gender_person"><star index="1"/></set>
+            <set name="other_gender"><star index="2"/></set>
+        </think>
+    </template>
+</category>
+
+<!-- Format: <person> is male/female -->
+<category>
+    <pattern>* IS MALE</pattern>
+    <template>
+        Got it. <star/> is male.
+        <think>
+            <set name="other_gender_person"><star/></set>
+            <set name="other_gender">male</set>
+        </think>
+    </template>
+</category>
+<category>
+    <pattern>* IS A MALE</pattern>
+    <template>
+        <srai><star/> IS MALE</srai>
+    </template>
+</category>
+<category>
+    <pattern>* IS FEMALE</pattern>
+    <template>
+        Got it. <star/> is female.
+        <think>
+            <set name="other_gender_person"><star/></set>
+            <set name="other_gender">female</set>
+        </think>
+    </template>
+</category>
+
+<!-- Format: HIS/HER GENDER IS <gender> -->
+<category>
+    <pattern>HIS GENDER IS *</pattern>
+    <template>
+        Thanks! His gender is <star/>.
+        <think>
+            <set name="other_gender_person">him</set>
+            <set name="other_gender"><star/></set>
+        </think>
+    </template>
+</category>
+
+<category>
+    <pattern>HER GENDER IS *</pattern>
+    <template>
+        Thanks! Her gender is <star/>.
+        <think>
+            <set name="other_gender_person">her</set>
+            <set name="other_gender"><star/></set>
+        </think>
+    </template>
+</category>
+
+</aiml>

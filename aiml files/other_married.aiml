@@ -1,0 +1,60 @@
+<aiml version= "2.0">
+<category>
+    <pattern>* IS MARRIED TO *</pattern>
+    <template>
+        Noted. <star index="1"/> is married to <star index="2"/>.
+        <think>
+            <set name="other_person1"><star index="1"/></set>
+            <set name="other_relation">married</set>
+            <set name="other_person2"><star index="2"/></set>
+        </think>
+    </template>
+</category>
+<category>
+    <pattern>* IS HUSBAND OF *</pattern>
+    <template>
+        Got it. <star index="1"/> is husband of <star index="2"/>.
+        <think>
+            <set name="other_person1"><star index="1"/></set>
+            <set name="other_relation">married</set>
+            <set name="other_person2"><star index="2"/></set>
+        </think>
+    </template>
+</category>
+
+<category>
+    <pattern>* IS WIFE OF *</pattern>
+    <template>
+        Okay. <star index="1"/> is wife of <star index="2"/>.
+        <think>
+            <set name="other_person1"><star index="1"/></set>
+            <set name="other_relation">married</set>
+            <set name="other_person2"><star index="2"/></set>
+        </think>
+    </template>
+</category>
+<category>
+    <pattern>*'S HUSBAND IS *</pattern>
+    <template>
+        Got it. <star index="2"/> is married to <star index="1"/>.
+        <think>
+            <set name="other_person1"><star index="2"/></set>
+            <set name="other_relation">married</set>
+            <set name="other_person2"><star index="1"/></set>
+        </think>
+    </template>
+</category>
+
+<category>
+    <pattern>*'S WIFE IS *</pattern>
+    <template>
+        Got it. <star index="2"/> is married to <star index="1"/>.
+        <think>
+            <set name="other_person1"><star index="2"/></set>
+            <set name="other_relation">married</set>
+            <set name="other_person2"><star index="1"/></set>
+        </think>
+    </template>
+</category>
+
+</aiml>

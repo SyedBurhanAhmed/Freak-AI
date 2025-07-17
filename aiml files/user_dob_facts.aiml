@@ -1,0 +1,78 @@
+<aiml version="1.0.1" encoding="UTF-8">
+
+<!-- Direct DOB statements -->
+<category>
+    <pattern>MY DATE OF BIRTH IS *</pattern>
+    <template>
+        Thanks for telling me! I have noted your date of birth as <star/>.
+        <think><set name="dob"><star/></set></think>
+    </template>
+</category>
+
+<category>
+    <pattern>DOB IS *</pattern>
+    <template>
+        Got it. Your date of birth is <star/>.
+        <think><set name="dob"><star/></set></think>
+    </template>
+</category>
+
+<!-- I was born on... -->
+<category>
+    <pattern>I WAS BORN ON *</pattern>
+    <template>
+        You were born on <star/>. Noted.
+        <think><set name="dob"><star/></set></think>
+    </template>
+</category>
+
+<category>
+    <pattern>I WAS BORN IN *</pattern>
+    <template>
+        I see! You were born in <star/>.
+        <think><set name="dob"><star/></set></think>
+    </template>
+</category>
+
+<!-- Format using slashes or dashes -->
+<category>
+    <pattern>MY DOB IS *</pattern>
+    <template><think><set name="dob"><star/></set></think>
+        DOB received as <star/>. Thank you.
+
+    </template>
+</category>
+
+<!-- Short catch-all fallback -->
+<category>
+    <pattern>BORN *</pattern>
+    <template>
+        Thanks! I'll note down <star/> as your birth info.
+        <think><set name="dob"><star/></set></think>
+    </template>
+</category>
+<category>
+    <pattern>MY BIRTHDAY IS *</pattern>
+    <template>
+        Thanks! Your birthday is <star/>.
+        <think><set name="dob"><star/></set></think>
+    </template>
+</category>
+
+<category>
+    <pattern>I WAS BORN *</pattern>
+    <template>
+        Noted! You were born <star/>.
+        <think><set name="dob"><star/></set></think>
+    </template>
+</category>
+
+<category>
+    <pattern>DATE OF BIRTH *</pattern>
+    <template>
+        Thanks! I've noted your DOB: <star/>.
+        <think><set name="dob"><star/></set></think>
+    </template>
+</category>
+
+</aiml>

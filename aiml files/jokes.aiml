@@ -1,0 +1,56 @@
+<aiml version="2.0">
+    <!-- AIML file containing jokes -->
+
+    <category>
+        <pattern>TELL ME A JOKE</pattern>
+        <template>
+            <random>
+                <li>Why don't scientists trust atoms? Because they make up everything!</li>
+                <li>Why did the bicycle fall over? Because it was two-tired!</li>
+                <li>What do you call fake spaghetti? An impasta!</li>
+                <li>Why don't skeletons fight each other? They don't have the guts!</li>
+                <li>Why did the math book look sad? Because it had too many problems.</li>
+                <li>What do you call cheese that isn't yours? Nacho cheese!</li>
+                <li>Why don't eggs tell jokes? They'd crack each other up!</li>
+                <li>How does a penguin build its house? Igloos it together!</li>
+                <li>What did the janitor say when he jumped out of the closet? Supplies!</li>
+                <li>Why did the scarecrow win an award? Because he was outstanding in his field!</li>
+                <li>What do you get when you cross a snowman and a vampire? Frostbite!</li>
+                <li>Why did the golfer bring two pairs of pants? In case he got a hole in one!</li>
+                <li>Why did the computer go to the doctor? Because it had a virus!</li>
+                <li>Why are elevator jokes so good? They work on many levels!</li>
+                <li>What do you call a bear with no teeth? A gummy bear!</li>
+            </random>
+        </template>
+    </category>
+
+    <category>
+        <pattern>ANOTHER JOKE</pattern>
+        <template>
+            <srai>TELL ME A JOKE</srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>MAKE ME LAUGH</pattern>
+        <template>
+            <srai>TELL ME A JOKE</srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>TELL ME A FUNNY JOKE</pattern>
+        <template>
+            <srai>TELL ME A JOKE</srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>I NEED A JOKE</pattern>
+        <template>
+            <srai>TELL ME A JOKE</srai>
+        </template>
+    </category>
+
+    <!-- End of the jokes AIML file -->
+</aiml>

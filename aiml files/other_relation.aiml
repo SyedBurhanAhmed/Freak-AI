@@ -1,0 +1,29 @@
+<aiml version= "2.0">
+<!-- Format: <person1> IS <relation> OF <person2> -->
+<category>
+    <pattern>* IS * OF *</pattern>
+    <template>
+        Okay. <star index="1"/> is <star index="2"/> of <star index="3"/>.
+        <think>
+            <set name="other_person1"><star index="3"/></set>
+            <set name="other_relation"><star index="2"/></set>
+            <set name="other_person2"><star index="1"/></set>
+        </think>
+    </template>
+</category>
+<category>
+    <pattern>* OF * IS *</pattern>
+    <template>
+
+       <srai><star index="3"/> IS <star index="1"/> OF <star index="2"/>.</srai>
+    </template>
+
+</category>
+<!-- Format: <person2>'s <relation> is <person1> -->
+<category>
+    <pattern>*'S * IS *</pattern>
+    <template>
+       <srai><star index="3"/> IS <star index="2"/> OF <star index="1"/>.</srai>
+    </template>
+</category>
+</aiml>

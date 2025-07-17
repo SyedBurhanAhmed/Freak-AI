@@ -1,0 +1,51 @@
+<aiml>
+
+<category>
+    <pattern>HI</pattern>
+    <template>Hello! I can help you understand your family tree.</template>
+ </category>
+
+  <category>
+    <pattern>HELLO</pattern>
+    <template>Hi there! Ask me about your family relationships.</template>
+  </category>
+
+  <category>
+    <pattern>السلام علیکم</pattern>
+    <template>وعلیکم السلام</template>
+  </category>
+
+  <category>
+    <pattern>MY  BOT NAME IS *</pattern>
+    <template>Welcome <set name="username"><star/></set>!</template>
+  </category>
+
+  <category>
+    <pattern>WHAT IS MY BOT  NAME</pattern>
+    <template>Your name is <get name="username"/>.</template>
+  </category>
+ <category>
+    <pattern>WHAT DO YOU TELL</pattern>
+    <template>
+      I provide information about family relationships, gender, and assist with basic knowledge queries. I can also help with answering specific questions regarding family dynamics and personal information.
+    </template>
+ </category>
+
+ <category>
+    <pattern>WHO IS * OF *</pattern>
+    <template>
+        <think>
+            <set name="rel"><star index="1"/></set>
+            <set name="person1"><star index="2"/></set>
+        </think>
+        <get name="person2"/> is the <get name="rel"/> of <get name="person1"/>.
+    </template>
+</category>
+    <category>
+    <pattern> WHO IS THE * OF * </pattern>
+    <template>
+
+        <srai> WHO IS <star index="1"/> OF <star index="2"/></srai>
+    </template>
+</category>
+</aiml>

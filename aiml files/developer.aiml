@@ -1,0 +1,93 @@
+<aiml version="2.0">
+<!-- Main Category for who created you -->
+<category>
+    <pattern>WHO CREATED YOU</pattern>
+    <template>
+        <random>
+            <li>I was created by Syed Burhan Ahmed, an AI Junior at UMT.</li>
+            <li>Syed Burhan Ahmed, AI Junior at UMT, made me with love and code!</li>
+            <li>I am a creation of Syed Burhan Ahmed, an aspiring AI Engineer from UMT.</li>
+            <li>Syed Burhan Ahmed developed me during his AI journey at UMT.</li>
+            <li>My developer is Syed Burhan Ahmed, a brilliant AI Junior from UMT.</li>
+        </random>
+    </template>
+</category>
+
+<!-- Jump Patterns for different ways users might ask -->
+<category>
+    <pattern>WHO MADE YOU</pattern>
+    <template>
+        <srai>WHO CREATED YOU</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>WHO DEVELOPED YOU</pattern>
+    <template>
+        <srai>WHO CREATED YOU</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>WHO BUILT YOU</pattern>
+    <template>
+        <srai>WHO CREATED YOU</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>WHO IS YOUR CREATOR</pattern>
+    <template>
+        <srai>WHO CREATED YOU</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>WHO PROGRAMMED YOU</pattern>
+    <template>
+        <srai>WHO CREATED YOU</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>WHO IS YOUR DEVELOPER</pattern>
+    <template>
+        <srai>WHO CREATED YOU</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>WHO DESIGNED YOU</pattern>
+    <template>
+        <srai>WHO CREATED YOU</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>WHO IS BEHIND YOU</pattern>
+    <template>
+        <srai>WHO CREATED YOU</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>WHO INVENTED YOU</pattern>
+    <template>
+        <srai>WHO CREATED YOU</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>WHO BUILT THIS BOT</pattern>
+    <template>
+        <srai>WHO CREATED YOU</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>WHO CREATED THIS BOT</pattern>
+    <template>
+        <srai>WHO CREATED YOU</srai>
+    </template>
+</category>
+</aiml>

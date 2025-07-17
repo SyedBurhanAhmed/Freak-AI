@@ -1,0 +1,764 @@
+
+<aiml version="2.0">
+
+<category>
+    <pattern>WHAT IS THE TEMPERATURE</pattern>
+    <template>
+        <think><set name="get_dht11_temperature">true</set></think>
+        <condition name="dht11_temperature">
+            <li value="unavailable">I can't access the DHT11 temperature sensor right now.</li>
+            <li>The DHT11 sensor shows the current temperature is <get name="dht11_temperature"/>°C.</li>
+        </condition>
+    </template>
+</category>
+
+<category>
+    <pattern>WHAT IS THE HUMIDITY</pattern>
+    <template>
+        <think><set name="get_dht11_humidity">true</set></think>
+        <condition name="dht11_humidity">
+            <li value="unavailable">I can't access the DHT11 humidity sensor right now.</li>
+            <li>The DHT11 sensor shows the current humidity is <get name="dht11_humidity"/>%.</li>
+        </condition>
+    </template>
+</category>
+<category>
+    <pattern>WHAT IS HUMIDITY</pattern>
+    <template><srai>WHAT IS THE HUMIDITY</srai>
+    </template>
+</category>
+    <category>
+    <pattern>WHAT IS TEMPERATURE</pattern>
+    <template><srai>WHAT IS THE TEMPERATURE</srai>
+    </template>
+</category>
+
+    <category>
+    <pattern>HOW IS ENVIRONMENT</pattern>
+    <template><srai>HOW IS THE ENVIRONMENT</srai>
+    </template>
+</category>
+<category>
+    <pattern>HOW IS THE ENVIRONMENT</pattern>
+    <template>
+        <think>
+            <set name="get_dht11_temperature">true</set>
+            <set name="get_dht11_humidity">true</set>
+            <set name="analyze_dht11_environment">true</set>
+        </think>
+        <condition name="dht11_temperature">
+            <li value="unavailable">I can't access the DHT11 environmental sensors right now.</li>
+            <li>
+                Based on my DHT11 sensor readings: Temperature is <get name="dht11_temperature"/>°C and humidity is <get name="dht11_humidity"/>%.
+                Your comfort score is <get name="dht11_comfort_score"/>%.
+                <condition name="dht11_recommendations">
+                    <li value="">The environment is optimal!</li>
+                    <li>Recommendations: <get name="dht11_recommendations"/></li>
+                </condition>
+            </li>
+        </condition>
+    </template>
+</category>
+
+<category>
+    <pattern>DHT11 STATUS</pattern>
+    <template>
+        <think><set name="get_dht11_status">true</set></think>
+        <condition name="dht11_status">
+            <li value="valid">The DHT11 sensor is connected and working properly.</li>
+            <li value="disconnected">The DHT11 sensor is currently disconnected.</li>
+            <li value="error">There's an error with the DHT11 sensor connection.</li>
+            <li>DHT11 sensor status is unknown.</li>
+        </condition>
+    </template>
+</category>
+
+<category>
+    <pattern>SHOW DHT11 MEMORY</pattern>
+    <template>
+        <think><set name="get_dht11_memory">true</set></think>
+        <condition name="latest_dht11_temp">
+            <li value="">No DHT11 sensory memory data available.</li>
+            <li>Latest DHT11 reading from sensory memory: <get name="latest_dht11_temp"/>°C temperature, <get name="latest_dht11_humidity"/>% humidity.</li>
+        </condition>
+    </template>
+</category>
+<!-- Temperature variations that redirect to main pattern -->
+<category>
+    <pattern>TEMPERATURE</pattern>
+    <template>
+        <srai>WHAT IS THE TEMPERATURE</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>CURRENT TEMPERATURE</pattern>
+    <template>
+        <srai>WHAT IS THE TEMPERATURE</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>HOW HOT IS IT</pattern>
+    <template>
+        <srai>WHAT IS THE TEMPERATURE</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>HOW COLD IS IT</pattern>
+    <template>
+        <srai>WHAT IS THE TEMPERATURE</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>TELL ME THE TEMPERATURE</pattern>
+    <template>
+        <srai>WHAT IS THE TEMPERATURE</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>CHECK TEMPERATURE</pattern>
+    <template>
+        <srai>WHAT IS THE TEMPERATURE</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>ROOM TEMPERATURE</pattern>
+    <template>
+        <srai>WHAT IS THE TEMPERATURE</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>TEMP</pattern>
+    <template>
+        <srai>WHAT IS THE TEMPERATURE</srai>
+    </template>
+</category>
+<!-- Humidity variations that redirect to main pattern -->
+<category>
+    <pattern>HUMIDITY</pattern>
+    <template>
+        <srai>WHAT IS THE HUMIDITY</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>CURRENT HUMIDITY</pattern>
+    <template>
+        <srai>WHAT IS THE HUMIDITY</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>HOW HUMID IS IT</pattern>
+    <template>
+        <srai>WHAT IS THE HUMIDITY</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>HUMIDITY LEVEL</pattern>
+    <template>
+        <srai>WHAT IS THE HUMIDITY</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>TELL ME THE HUMIDITY</pattern>
+    <template>
+        <srai>WHAT IS THE HUMIDITY</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>CHECK HUMIDITY</pattern>
+    <template>
+        <srai>WHAT IS THE HUMIDITY</srai>
+    </template>
+</category>
+<category>
+    <pattern>WHAT IS THE HUMIDITY LEVEL</pattern>
+    <template>
+        <think>
+            <set name="get_dht11_humidity">true</set>
+            <set name="analyze_dht11_environment">true</set>
+        </think>
+        <condition name="dht11_humidity">
+            <li value="unavailable">I can't access the humidity sensor right now.</li>
+            <li>
+                The humidity level is <get name="dht11_humidity"/>%.
+                <condition name="dht11_humidity">
+                    <li value="*">
+                        <javascript>
+                            var humidity = parseFloat('<get name="dht11_humidity"/>');
+                            var level = "";
+
+                            if (humidity >= 70) level = "This is very high humidity - extremely humid conditions!";
+                            else if (humidity >= 60) level = "This is high humidity - quite humid.";
+                            else if (humidity >= 50) level = "This is moderate humidity - comfortable level.";
+                            else if (humidity >= 40) level = "This is normal humidity - good level.";
+                            else if (humidity >= 30) level = "This is low humidity - getting dry.";
+                            else level = "This is very low humidity - extremely dry conditions!";
+
+                            return " " + level;
+                        </javascript>
+                    </li>
+                </condition>
+            </li>
+        </condition>
+    </template>
+</category>
+
+<category>
+    <pattern>HUMIDITY LEVEL</pattern>
+    <template>
+        <srai>WHAT IS THE HUMIDITY LEVEL</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>LEVEL OF HUMIDITY</pattern>
+    <template>
+        <srai>WHAT IS THE HUMIDITY LEVEL</srai>
+    </template>
+</category><category>
+    <pattern>IS THE HUMIDITY HIGH</pattern>
+    <template>
+        <think><set name="get_dht11_humidity">true</set></think>
+        <condition name="dht11_humidity">
+            <li value="unavailable">I can't check the humidity level right now.</li>
+            <li>
+                <think>
+                    <set name="humidity_check">
+                        <condition name="dht11_humidity">
+                            <li value="*">
+                                <javascript>
+                                <![CDATA[
+                                    var humidity = parseFloat('<get name="dht11_humidity"/>');
+                                    if (humidity >= 60) return "yes";
+                                    else return "no";
+                                ]]>
+                                </javascript>
+                            </li>
+                        </condition>
+                    </set>
+                </think>
+                <condition name="humidity_check">
+                    <li value="yes">Yes, the humidity is high at <get name="dht11_humidity"/>%. This can make the air feel stuffy and uncomfortable.</li>
+                    <li value="no">No, the humidity is not high. It's <get name="dht11_humidity"/>%, which is within a reasonable range.</li>
+                </condition>
+            </li>
+        </condition>
+    </template>
+</category>
+
+<category>
+    <pattern>IS THE HUMIDITY LOW</pattern>
+    <template>
+        <think><set name="get_dht11_humidity">true</set></think>
+        <condition name="dht11_humidity">
+            <li value="unavailable">I can't check the humidity level right now.</li>
+            <li>
+                <think>
+                    <set name="humidity_check">
+                        <condition name="dht11_humidity">
+                            <li value="*">
+                                <javascript>
+                                <![CDATA[
+                                    var humidity = parseFloat('<get name="dht11_humidity"/>');
+                                    if (humidity < 40) return "yes";
+                                    else return "no";
+                                ]]>
+                                </javascript>
+                            </li>
+                        </condition>
+                    </set>
+                </think>
+                <condition name="humidity_check">
+                    <li value="yes">Yes, the humidity is low at <get name="dht11_humidity"/>%. This can make the air feel dry and may cause discomfort.</li>
+                    <li value="no">No, the humidity is not low. It's <get name="dht11_humidity"/>%, which is adequate.</li>
+                </condition>
+            </li>
+        </condition>
+    </template>
+</category>
+
+<category>
+    <pattern>WHAT IS THE TEMPERATURE LEVEL</pattern>
+    <template>
+        <think>
+            <set name="get_dht11_temperature">true</set>
+            <set name="analyze_dht11_environment">true</set>
+        </think>
+        <condition name="dht11_temperature">
+            <li value="unavailable">I can't access the temperature sensor right now.</li>
+            <li>
+                The temperature level is <get name="dht11_temperature"/>°C.
+                <condition name="dht11_temperature">
+                    <li value="*">
+                        <javascript>
+                        <![CDATA[
+                            var temp = parseFloat('<get name="dht11_temperature"/>');
+                            var level = "";
+
+                            if (temp >= 35) level = "This is extremely hot - dangerous heat level!";
+                            else if (temp >= 30) level = "This is hot - quite warm conditions.";
+                            else if (temp >= 25) level = "This is warm - pleasant temperature.";
+                            else if (temp >= 20) level = "This is comfortable - ideal temperature.";
+                            else if (temp >= 15) level = "This is cool - slightly cold.";
+                            else if (temp >= 10) level = "This is cold - quite chilly.";
+                            else level = "This is very cold - extremely low temperature!";
+
+                            return " " + level;
+                        ]]>
+                        </javascript>
+                    </li>
+                </condition>
+            </li>
+        </condition>
+    </template>
+</category>
+
+<category>
+    <pattern>TEMPERATURE LEVEL</pattern>
+    <template>
+        <srai>WHAT IS THE TEMPERATURE LEVEL</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>LEVEL OF TEMPERATURE</pattern>
+    <template>
+        <srai>WHAT IS THE TEMPERATURE LEVEL</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>WHAT ARE THE ENVIRONMENTAL LEVELS</pattern>
+    <template>
+        <think>
+            <set name="get_dht11_temperature">true</set>
+            <set name="get_dht11_humidity">true</set>
+            <set name="analyze_dht11_environment">true</set>
+        </think>
+        <condition name="dht11_temperature">
+            <li value="unavailable">I can't access the environmental sensors right now.</li>
+            <li>
+                Here are the current environmental levels:
+
+                Temperature Level: <get name="dht11_temperature"/>°C
+                <condition name="dht11_temperature">
+                    <li value="*">
+                        <javascript>
+                        <![CDATA[
+                            var temp = parseFloat('<get name="dht11_temperature"/>');
+                            if (temp >= 30) return "- Hot level";
+                            else if (temp >= 20) return "- Comfortable level";
+                            else return "- Cold level";
+                        ]]>
+                        </javascript>
+                    </li>
+                </condition>
+
+                Humidity Level: <get name="dht11_humidity"/>%
+                <condition name="dht11_humidity">
+                    <li value="*">
+                        <javascript>
+                        <![CDATA[
+                            var humidity = parseFloat('<get name="dht11_humidity"/>');
+                            if (humidity >= 60) return "- High humidity level";
+                            else if (humidity >= 40) return "- Normal humidity level";
+                            else return "- Low humidity level";
+                        ]]>
+                        </javascript>
+                    </li>
+                </condition>
+
+                Comfort Score: <get name="dht11_comfort_score"/>%
+                <condition name="dht11_recommendations">
+                    <li value="">Overall: Optimal environmental conditions!</li>
+                    <li>Recommendations: <get name="dht11_recommendations"/></li>
+                </condition>
+            </li>
+        </condition>
+    </template>
+</category>
+
+<category>
+    <pattern>WHAT IS MY COMFORT LEVEL</pattern>
+    <template>
+        <think><set name="analyze_dht11_environment">true</set></think>
+        <condition name="dht11_comfort_score">
+            <li value="">I need to check the environmental sensors to determine your comfort level.</li>
+            <li>
+                Your comfort level is <get name="dht11_comfort_score"/>% based on the current environmental conditions.
+                <condition name="dht11_comfort_score">
+                    <li value="*">
+                        <javascript>
+                        <![CDATA[
+                            var score = parseFloat('<get name="dht11_comfort_score"/>');
+                            var comfort = "";
+
+                            if (score >= 80) comfort = "Excellent - You should feel very comfortable!";
+                            else if (score >= 60) comfort = "Good - Reasonably comfortable conditions.";
+                            else if (score >= 40) comfort = "Fair - Some discomfort may be present.";
+                            else if (score >= 20) comfort = "Poor - Uncomfortable conditions.";
+                            else comfort = "Very Poor - Highly uncomfortable environment!";
+
+                            return " " + comfort;
+                        ]]>
+                        </javascript>
+                    </li>
+                </condition>
+            </li>
+        </condition>
+    </template>
+</category>
+
+<category>
+    <pattern>COMFORT LEVEL</pattern>
+    <template>
+        <srai>WHAT IS MY COMFORT LEVEL</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>HOW COMFORTABLE IS IT</pattern>
+    <template>
+        <srai>WHAT IS MY COMFORT LEVEL</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>ENVIRONMENTAL STATUS</pattern>
+    <template>
+        <think>
+            <set name="get_dht11_temperature">true</set>
+            <set name="get_dht11_humidity">true</set>
+            <set name="analyze_dht11_environment">true</set>
+        </think>
+        <condition name="dht11_temperature">
+            <li value="unavailable">Environmental sensors are not accessible.</li>
+            <li>
+                Current Environmental Status:
+
+                [TEMP] Temperature: <get name="dht11_temperature"/>°C
+                <condition name="dht11_temperature">
+                    <li value="*">
+                        <javascript>
+                        <![CDATA[
+                            var temp = parseFloat('<get name="dht11_temperature"/>');
+                            if (temp >= 30) return "(Hot)";
+                            else if (temp >= 20) return "(Normal)";
+                            else return "(Cold)";
+                        ]]>
+                        </javascript>
+                    </li>
+                </condition>
+
+                [HUM] Humidity: <get name="dht11_humidity"/>%
+                <condition name="dht11_humidity">
+                    <li value="*">
+                        <javascript>
+                        <![CDATA[
+                            var humidity = parseFloat('<get name="dht11_humidity"/>');
+                            if (humidity >= 60) return "(Humid)";
+                            else if (humidity >= 40) return "(Normal)";
+                            else return "(Dry)";
+                        ]]>
+                        </javascript>
+                    </li>
+                </condition>
+
+                [COMFORT] Score: <get name="dht11_comfort_score"/>%
+
+                <condition name="dht11_recommendations">
+                    <li value="">[OK] Environment is optimal!</li>
+                    <li>[INFO] Suggestions: <get name="dht11_recommendations"/></li>
+                </condition>
+            </li>
+        </condition>
+    </template>
+</category>
+
+<!-- Flexible pattern matching -->
+<category>
+    <pattern>* HUMIDITY LEVEL *</pattern>
+    <template>
+        <srai>WHAT IS THE HUMIDITY LEVEL</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>* TEMPERATURE LEVEL *</pattern>
+    <template>
+        <srai>WHAT IS THE TEMPERATURE LEVEL</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>* COMFORT LEVEL *</pattern>
+    <template>
+        <srai>WHAT IS MY COMFORT LEVEL</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>CHECK * LEVELS</pattern>
+    <template>
+        <srai>WHAT ARE THE ENVIRONMENTAL LEVELS</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>SHOW * LEVELS</pattern>
+    <template>
+        <srai>WHAT ARE THE ENVIRONMENTAL LEVELS</srai>
+    </template>
+</category>
+
+
+<category>
+    <pattern>* COMFORT LEVEL *</pattern>
+    <template>
+        <srai>WHAT IS MY COMFORT LEVEL</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>CHECK * LEVELS</pattern>
+    <template>
+        <srai>WHAT ARE THE ENVIRONMENTAL LEVELS</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>SHOW * LEVELS</pattern>
+    <template>
+        <srai>WHAT ARE THE ENVIRONMENTAL LEVELS</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>ROOM HUMIDITY</pattern>
+    <template>
+        <srai>WHAT IS THE HUMIDITY</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>MOISTURE</pattern>
+    <template>
+        <srai>WHAT IS THE HUMIDITY</srai>
+    </template>
+</category>
+<!-- DHT11 status variations that redirect to main pattern -->
+<category>
+    <pattern>SENSOR STATUS</pattern>
+    <template>
+        <srai>DHT11 STATUS</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>DHT11 CONNECTION</pattern>
+    <template>
+        <srai>DHT11 STATUS</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>IS SENSOR WORKING</pattern>
+    <template>
+        <srai>DHT11 STATUS</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>CHECK SENSOR</pattern>
+    <template>
+        <srai>DHT11 STATUS</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>SENSOR CHECK</pattern>
+    <template>
+        <srai>DHT11 STATUS</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>DHT11 HEALTH</pattern>
+    <template>
+        <srai>DHT11 STATUS</srai>
+    </template>
+</category>
+<!-- DHT11 memory variations that redirect to main pattern -->
+<category>
+    <pattern>SENSOR MEMORY</pattern>
+    <template>
+        <srai>SHOW DHT11 MEMORY</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>DHT11 HISTORY</pattern>
+    <template>
+        <srai>SHOW DHT11 MEMORY</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>SENSOR HISTORY</pattern>
+    <template>
+        <srai>SHOW DHT11 MEMORY</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>PREVIOUS READINGS</pattern>
+    <template>
+        <srai>SHOW DHT11 MEMORY</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>LAST READING</pattern>
+    <template>
+        <srai>SHOW DHT11 MEMORY</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>SENSORY MEMORY</pattern>
+    <template>
+        <srai>SHOW DHT11 MEMORY</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>MEMORY DATA</pattern>
+    <template>
+        <srai>SHOW DHT11 MEMORY</srai>
+    </template>
+</category>
+<!-- Combined queries for both temperature and humidity -->
+<category>
+    <pattern>TEMPERATURE AND HUMIDITY</pattern>
+    <template>
+        <srai>HOW IS THE ENVIRONMENT</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>TEMP AND HUMIDITY</pattern>
+    <template>
+        <srai>HOW IS THE ENVIRONMENT</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>BOTH READINGS</pattern>
+    <template>
+        <srai>HOW IS THE ENVIRONMENT</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>ALL SENSORS</pattern>
+    <template>
+        <srai>HOW IS THE ENVIRONMENT</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>FULL REPORT</pattern>
+    <template>
+        <srai>HOW IS THE ENVIRONMENT</srai>
+    </template>
+</category>
+<!-- Wildcard patterns for more flexible matching -->
+<category>
+    <pattern>* TEMPERATURE *</pattern>
+    <template>
+        <srai>WHAT IS THE TEMPERATURE</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>* HUMIDITY *</pattern>
+    <template>
+        <srai>WHAT IS THE HUMIDITY</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>* ENVIRONMENT *</pattern>
+    <template>
+        <srai>HOW IS THE ENVIRONMENT</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>* DHT11 *</pattern>
+    <template>
+        <srai>DHT11 STATUS</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>* SENSOR *</pattern>
+    <template>
+        <srai>DHT11 STATUS</srai>
+    </template>
+</category>
+<!-- Question format variations -->
+<category>
+    <pattern>CAN YOU CHECK THE TEMPERATURE</pattern>
+    <template>
+        <srai>WHAT IS THE TEMPERATURE</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>CAN YOU CHECK THE HUMIDITY</pattern>
+    <template>
+        <srai>WHAT IS THE HUMIDITY</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>CAN YOU CHECK THE ENVIRONMENT</pattern>
+    <template>
+        <srai>HOW IS THE ENVIRONMENT</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>WHAT IS THE CURRENT TEMPERATURE</pattern>
+    <template>
+        <srai>WHAT IS THE TEMPERATURE</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>WHAT IS THE CURRENT HUMIDITY</pattern>
+    <template>
+        <srai>WHAT IS THE HUMIDITY</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>HOW IS THE CURRENT ENVIRONMENT</pattern>
+    <template>
+        <srai>HOW IS THE ENVIRONMENT</srai>
+    </template>
+</category>
+
+</aiml>

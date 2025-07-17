@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+  <!-- Category to detect "enroll" in any sentence -->
+  <category>
+    <pattern>* ENROLL *</pattern>
+    <template>enroll</template>
+  </category>
+  <category>
+    <pattern>* ENROLL</pattern>
+    <template>enroll</template>
+  </category>
+  <category>
+    <pattern>ENROLL *</pattern>
+    <template>enroll</template>
+  </category>
+  <category>
+    <pattern>ENROLL</pattern>
+    <template>enroll</template>
+  </category>
+  <!-- Category to detect "delete" in any sentence -->
+  <category>
+    <pattern>* DELETE *</pattern>
+    <template>delete</template>
+  </category>
+  <category>
+    <pattern>DELETE *</pattern>
+    <template>delete</template>
+  </category>
+  <category>
+    <pattern>* DELETE</pattern>
+    <template>delete</template>
+  </category>
+  <category>
+    <pattern>DELETE</pattern>
+    <template>delete</template>
+  </category>
+  <!-- Category to detect "update" in any sentence -->
+  <category>
+    <pattern>* UPDATE *</pattern>
+    <template>update</template>
+  </category>
+  <category>
+    <pattern>UPDATE *</pattern>
+    <template>update</template>
+  </category>
+  <category>
+    <pattern>* UPDATE</pattern>
+    <template>update</template>
+  </category>
+  <category>
+    <pattern>UPDATE</pattern>
+    <template>update</template>
+  </category>
+  <!-- Category to detect "scan" in any sentence -->
+  <category>
+    <pattern>* SCAN *</pattern>
+    <template>scan</template>
+  </category>
+  <category>
+    <pattern>SCAN *</pattern>
+    <template>scan</template>
+  </category>
+  <category>
+    <pattern>* SCAN</pattern>
+    <template>scan</template>
+  </category>
+  <category>
+    <pattern>SCAN</pattern>
+    <template>scan</template>
+  </category>
+  <!-- Categories for degree abbreviations -->
+  <!-- If the user says something containing "bsai", return "BS (AI)" -->
+  <category>
+    <pattern>* BSAI *</pattern>
+    <template>BS (AI)</template>
+  </category>
+
+  <!-- If the user says something containing "msai", return "MS (AI)" -->
+  <category>
+    <pattern>* MSAI *</pattern>
+    <template>MS (AI)</template>
+  </category>
+
+  <!-- If the user says something containing "bsse", return "BS (SE)" -->
+  <category>
+    <pattern>* BSSE *</pattern>
+    <template>BS (SE)</template>
+  </category>
+
+  <!-- If the user says something containing "msse", return "MS (SE)" -->
+  <category>
+    <pattern>* MSSE *</pattern>
+    <template>MS (SE)</template>
+  </category>
+
+  <!-- Fallback category if nothing matches -->
+
+</aiml>

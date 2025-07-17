@@ -1,0 +1,56 @@
+<aiml version= "2.0">
+<category>
+    <pattern>DOB OF * IS *</pattern>
+    <template>
+        Got it. <star index="1"/>'s DOB is <star index="2"/>.
+        <think>
+            <set name="other_dob_person"><star index="1"/></set>
+            <set name="other_dob"><star index="2"/></set>
+        </think>
+    </template>
+</category>
+
+<category>
+    <pattern>DATE OF BIRTH OF * IS *</pattern>
+    <template>
+        Noted. <star index="1"/>'s date of birth is <star index="2"/>.
+        <think>
+            <set name="other_dob_person"><star index="1"/></set>
+            <set name="other_dob"><star index="2"/></set>
+        </think>
+    </template>
+</category>
+
+<category>
+    <pattern>* WAS BORN ON *</pattern>
+    <template>
+        Thanks! <star index="1"/> was born on <star index="2"/>.
+        <think>
+            <set name="other_dob_person"><star index="1"/></set>
+            <set name="other_dob"><star index="2"/></set>
+        </think>
+    </template>
+</category>
+
+<category>
+    <pattern>*'S DOB IS *</pattern>
+    <template>
+        Got it. <star index="1"/>'s DOB is <star index="2"/>.
+        <think>
+            <set name="other_dob_person"><star index="1"/></set>
+            <set name="other_dob"><star index="2"/></set>
+        </think>
+    </template>
+</category>
+
+<category>
+    <pattern>*'S DATE OF BIRTH IS *</pattern>
+    <template>
+        Noted. <star index="1"/>'s date of birth is <star index="2"/>.
+        <think>
+            <set name="other_dob_person"><star index="1"/></set>
+            <set name="other_dob"><star index="2"/></set>
+        </think>
+    </template>
+</category>
+</aiml>

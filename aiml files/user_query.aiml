@@ -1,0 +1,412 @@
+<aiml version ="2.0">
+<category>
+    <pattern> WHO IS * OF * </pattern>
+    <template>
+        <think>
+            <set name="rel"><star index="1"/></set>
+            <set name="person1"><star index="2"/></set>
+        </think>
+        <get name="person2"/> is the <get name="rel"/> of <get name="person1"/>.
+    </template>
+</category>
+<category>
+    <pattern> WHO IS * OF USER </pattern>
+    <template>
+        <think>
+            <set name="rel"><star index="1"/></set>
+        </think>
+        <get name="person2"/> is your <get name="rel"/>.
+    </template>
+</category>
+    <category>
+    <pattern> WHO IS THE * OF * </pattern>
+    <template>
+
+        <srai> WHO IS <star index="1"/> OF <star index="2"/></srai>
+    </template>
+</category>
+    <category>
+    <pattern> WHO IS *'S * </pattern>
+    <template>
+
+        <srai> WHO IS <star index="2"/> OF <star index="1"/></srai>
+    </template>
+</category>
+<!-- Main Date of Birth category -->
+<category>
+    <pattern>WHAT IS THE DATE OF BIRTH OF *</pattern>
+    <template>
+        <think><set name="dob_person"><star/></set></think>
+        <random>
+            <li>The date of birth of <get name="person"/> is <get name="dob"/>.</li>
+            <li><get name="person"/>'s birth date is <get name="dob"/>.</li>
+            <li><get name="dob"/> is the date when <get name="person"/> was born.</li>
+        </random>
+    </template>
+</category>
+
+<!-- Jump Patterns for Date of Birth -->
+<category>
+    <pattern>WHEN WAS * BORN</pattern>
+    <template>
+        <srai>WHAT IS THE DATE OF BIRTH OF <star/></srai>
+    </template>
+</category>
+<category>
+    <pattern>WHAT IS DATE OF BIRTH OF *</pattern>
+    <template>
+        <srai>WHAT IS THE DATE OF BIRTH OF <star/></srai>
+    </template>
+</category>
+
+<category>
+    <pattern>WHAT IS *'S DATE OF BIRTH</pattern>
+    <template>
+        <srai>WHAT IS THE DATE OF BIRTH OF <star/></srai>
+    </template>
+</category>
+<category>
+    <pattern>WHAT IS DOB OF *</pattern>
+    <template>
+        <srai>WHAT IS THE DATE OF BIRTH OF <star/></srai>
+    </template>
+</category>
+
+<category>
+    <pattern>WHEN IS *'S BIRTHDAY</pattern>
+    <template>
+        <srai>WHAT IS THE DATE OF BIRTH OF <star/></srai>
+    </template>
+</category>
+<category>
+    <pattern>WHAT IS MY DATE OF BIRTH</pattern>
+    <template><srai>WHAT IS THE DATE OF BIRTH OF USER</srai></template>
+</category>
+
+<category>
+    <pattern>WHAT IS MY DOB</pattern>
+    <template><srai>WHAT IS THE DATE OF BIRTH OF USER</srai></template>
+</category>
+
+<category>
+    <pattern>WHEN IS MY BIRTHDAY</pattern>
+    <template><srai>WHAT IS THE DATE OF BIRTH OF USER</srai></template>
+</category>
+
+<category>
+    <pattern>WHEN WAS I BORN</pattern>
+    <template><srai>WHAT IS THE DATE OF BIRTH OF USER</srai></template>
+</category>
+
+<category>
+    <pattern>TELL ME MY DATE OF BIRTH</pattern>
+    <template><srai>WHAT IS THE DATE OF BIRTH OF USER</srai></template>
+</category>
+
+<category>
+    <pattern>DO YOU KNOW MY DATE OF BIRTH</pattern>
+    <template><srai>WHAT IS THE DATE OF BIRTH OF USER</srai></template>
+</category>
+
+<category>
+    <pattern>CAN YOU TELL ME MY DATE OF BIRTH</pattern>
+    <template><srai>WHAT IS THE DATE OF BIRTH OF USER</srai></template>
+</category>
+
+<category>
+    <pattern>GIVE ME MY BIRTHDAY</pattern>
+    <template><srai>WHAT IS THE DATE OF BIRTH OF USER</srai></template>
+</category>
+
+<category>
+    <pattern>TELL MY DOB</pattern>
+    <template><srai>WHAT IS THE DATE OF BIRTH OF USER</srai></template>
+</category>
+
+<category>
+    <pattern>I WAS BORN ON *</pattern>
+    <template><srai>WHAT IS THE DATE OF BIRTH OF USER</srai></template>
+</category>
+
+<category>
+    <pattern>MY BIRTHDAY</pattern>
+    <template><srai>WHAT IS THE DATE OF BIRTH OF USER</srai></template>
+</category>
+
+<category>
+    <pattern>WHO IS MY *</pattern>
+    <template>
+        <think>
+            <set name="rel"><star/></set>
+            <set name="person1">USER</set>
+        </think>
+        <srai>WHO IS <get name="rel"/> OF USER</srai>
+    </template>
+</category>
+<category>
+    <pattern>DO YOU KNOW MY *</pattern>
+    <template>
+        <think>
+            <set name="rel"><star/></set>
+            <set name="person1">USER</set>
+        </think>
+        <srai>WHO IS <get name="rel"/> OF USER</srai>
+    </template>
+</category>
+<category>
+    <pattern>WHO IS * OF ME</pattern>
+    <template>
+        <think>
+            <set name="rel"><star/></set>
+            <set name="person1">USER</set>
+        </think>
+        <srai>WHO IS <get name="rel"/> OF USER</srai>
+    </template>
+</category>
+<category>
+    <pattern>WHO IS * OF MYSELF</pattern>
+    <template>
+        <think>
+            <set name="rel"><star/></set>
+            <set name="person1">USER</set>
+        </think>
+        <srai>WHO IS <get name="rel"/> OF USER</srai>
+    </template>
+</category>
+<category>
+    <pattern>TELL ME WHO IS * OF ME</pattern>
+    <template>
+        <think>
+            <set name="rel"><star/></set>
+            <set name="person1">USER</set>
+        </think>
+        <srai>WHO IS <get name="rel"/> OF USER</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>CAN YOU TELL WHO IS * OF ME</pattern>
+    <template>
+        <think>
+            <set name="rel"><star/></set>
+            <set name="person1">USER</set>
+        </think>
+        <srai>WHO IS <get name="rel"/> OF USER</srai>
+    </template>
+</category>
+
+<!-- Main Age category -->
+<category>
+    <pattern>WHAT IS THE AGE OF *</pattern>
+    <template>
+        <think><set name="age_person"><star/></set></think>
+        <random>
+            <li><get name="person"/> is <get name="age"/> years old.</li>
+            <li>The age of <get name="person"/> is <get name="age"/> years.</li>
+            <li>Currently, <get name="person"/> is <get name="age"/> years of age.</li>
+        </random>
+    </template>
+</category>
+<category>
+    <pattern>WHAT IS AGE OF *</pattern>
+    <template>
+        <think><set name="age_person"><star/></set></think>
+        <random>
+            <li><get name="person"/> is <get name="age"/> years old.</li>
+            <li>The age of <get name="person"/> is <get name="age"/> years.</li>
+            <li>Currently, <get name="person"/> is <get name="age"/> years of age.</li>
+        </random>
+    </template>
+</category>
+<!-- Jump Patterns for Age -->
+<category>
+    <pattern>HOW OLD IS *</pattern>
+    <template>
+        <srai>WHAT IS THE AGE OF <star/></srai>
+    </template>
+</category>
+
+<category>
+    <pattern>AGE OF *</pattern>
+    <template>
+        <srai>WHAT IS THE AGE OF <star/></srai>
+    </template>
+</category>
+<category>
+    <pattern>WHAT IS *'s AGE</pattern>
+    <template>
+        <srai>WHAT IS THE AGE OF <star/></srai>
+    </template>
+</category>
+<category>
+    <pattern>CAN YOU TELL ME THE AGE OF *</pattern>
+    <template>
+        <srai>WHAT IS THE AGE OF <star/></srai>
+    </template>
+</category>
+<!-- First-Person Age Queries (mapped to USER) -->
+<category>
+    <pattern>WHAT IS MY AGE</pattern>
+    <template>
+        <srai>WHAT IS THE AGE OF USER</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>TELL ME MY AGE</pattern>
+    <template>
+        <srai>WHAT IS THE AGE OF USER</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>HOW OLD AM I</pattern>
+    <template>
+        <srai>WHAT IS THE AGE OF USER</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>DO YOU KNOW MY AGE</pattern>
+    <template>
+        <srai>WHAT IS THE AGE OF USER</srai>
+    </template>
+</category>
+
+<category>
+    <pattern>CAN YOU TELL ME MY AGE</pattern>
+    <template>
+        <srai>WHAT IS THE AGE OF USER</srai>
+    </template>
+</category>
+
+---
+
+
+
+<category>
+    <pattern>TELL ME WHO IS * OF *</pattern>
+    <template>
+        <srai>WHO IS <star index="1"/> OF <star index="2"/></srai>
+    </template>
+</category>
+
+<category>
+    <pattern>CAN YOU TELL WHO IS * OF *</pattern>
+    <template>
+        <srai>WHO IS <star index="1"/> OF <star index="2"/></srai>
+    </template>
+</category>
+
+
+<!-- Main Gender Category -->
+<category>
+    <pattern>IS * MALE OR FEMALE</pattern>
+    <template>
+        <think><set name="gender_person"><star/></set></think>
+        <random>
+            <li><get name="person"/> is a <get name="gender"/>.</li>
+            <li>The gender of <get name="person"/> is <get name="gender"/>.</li>
+            <li><get name="gender"/> is the gender of <get name="person"/>.</li>
+        </random>
+    </template>
+</category>
+<!-- Exact and Loose Patterns for Gender Queries -->
+
+<category>
+    <pattern>WHAT IS GENDER OF *</pattern>
+    <template><srai>IS <star/> MALE OR FEMALE</srai></template>
+</category>
+
+<category>
+    <pattern>WHAT IS THE GENDER OF *</pattern>
+    <template><srai>IS <star/> MALE OR FEMALE</srai></template>
+</category>
+
+<category>
+    <pattern>GENDER OF *</pattern>
+    <template><srai>IS <star/> MALE OR FEMALE</srai></template>
+</category>
+
+<category>
+    <pattern>TELL ME GENDER OF *</pattern>
+    <template><srai>IS <star/> MALE OR FEMALE</srai></template>
+</category>
+
+<category>
+    <pattern>IS * A BOY OR GIRL</pattern>
+    <template><srai>IS <star/> MALE OR FEMALE</srai></template>
+</category>
+
+<category>
+    <pattern>IS * A MALE OR FEMALE</pattern>
+    <template><srai>IS <star/> MALE OR FEMALE</srai></template>
+</category>
+
+<category>
+    <pattern>IS * MAN OR WOMAN</pattern>
+    <template><srai>IS <star/> MALE OR FEMALE</srai></template>
+</category>
+
+<category>
+    <pattern>CAN YOU TELL ME IF * IS MALE OR FEMALE</pattern>
+    <template><srai>IS <star/> MALE OR FEMALE</srai></template>
+</category>
+
+<category>
+    <pattern>TELL ME IF * IS MALE OR FEMALE</pattern>
+    <template><srai>IS <star/> MALE OR FEMALE</srai></template>
+</category>
+
+<category>
+    <pattern>IS * A GIRL OR BOY</pattern>
+    <template><srai>IS <star/> MALE OR FEMALE</srai></template>
+</category>
+
+<category>
+    <pattern>WHAT GENDER IS *</pattern>
+    <template><srai>IS <star/> MALE OR FEMALE</srai></template>
+</category>
+<category>
+    <pattern>WHAT IS MY GENDER</pattern>
+    <template><srai>IS USER MALE OR FEMALE</srai></template>
+</category>
+
+<category>
+    <pattern>TELL ME MY GENDER</pattern>
+    <template><srai>IS USER MALE OR FEMALE</srai></template>
+</category>
+
+<category>
+    <pattern>CAN YOU TELL ME MY GENDER</pattern>
+    <template><srai>IS USER MALE OR FEMALE</srai></template>
+</category>
+
+<category>
+    <pattern>DO YOU KNOW MY GENDER</pattern>
+    <template><srai>IS USER MALE OR FEMALE</srai></template>
+</category>
+
+<category>
+    <pattern>GIVE ME MY GENDER</pattern>
+    <template><srai>IS USER MALE OR FEMALE</srai></template>
+</category>
+
+<category>
+    <pattern>MY GENDER</pattern>
+    <template><srai>IS USER MALE OR FEMALE</srai></template>
+</category>
+
+<category>
+    <pattern>IS USER A MALE OR FEMALE</pattern>
+    <template>
+        <think><set name="gender_person">USER</set></think>
+        <!-- backend resolves USER to session["username"] -->
+        <random>
+            <li>User's gender is <get name="gender"/>.</li>
+            <li><get name="username"/> is <get name="gender"/>.</li>
+        </random>
+    </template>
+</category>
+
+</aiml>

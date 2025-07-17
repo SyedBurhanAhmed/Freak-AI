@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Freak</title>
+    <link rel='icon' type='image/x-icon' href='https://miro.medium.com/v2/resize:fit:327/1*paQ7E6f2VyTKXHpR-aViFg.png'></link>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: #1e293b;
+        }
+
+        .login-box {
+            width: 100%;
+            max-width: 400px;
+            padding: 40px;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            text-align: center;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s;
+        }
+
+        .login-box:hover::before {
+            left: 100%;
+        }
+
+        .login-box img {
+            width: 100px;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 50%;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .login-box img:hover {
+            transform: scale(1.1);
+        }
+
+        .login-box h2 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 30px;
+        }
+
+        .login-box input[type="email"],
+        .login-box input[type="password"],
+        .login-box input[type="text"] {
+            width: 100%;
+            padding: 15px 20px;
+            margin: 10px 0;
+            font-size: 16px;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+            color: #1e293b;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .login-box input[type="email"]:focus,
+        .login-box input[type="password"]:focus,
+        .login-box input[type="text"]:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+            outline: none;
+            transform: translateY(-2px);
+        }
+
+        .login-box button {
+            width: 100%;
+            padding: 15px;
+            margin: 20px 0;
+            font-size: 16px;
+            font-weight: 600;
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-box button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s;
+        }
+
+        .login-box button:hover::before {
+            left: 100%;
+        }
+
+        .login-box button:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+        }
+
+        .login-box button:active {
+            transform: translateY(-1px) scale(0.98);
+        }
+
+        .login-box a {
+            display: inline-block;
+            margin-top: 15px;
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .login-box a:hover {
+            color: #1e40af;
+            transform: translateY(-1px);
+        }
+
+        .login-box p {
+            display: inline-block;
+            color: #64748b;
+            margin-right: 5px;
+            font-weight: 400;
+        }
+
+        .login-box .signup-link {
+            display: inline-block;
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        .show-password-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin: 15px 0;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+        }
+
+        .show-password-wrapper input[type="checkbox"] {
+            transform: scale(1.5);
+            margin-right: 10px;
+            accent-color: #2563eb;
+        }
+
+        .show-password-wrapper label {
+            font-size: 16px;
+            color: #1e293b;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .message {
+            font-size: 16px;
+            padding: 15px;
+            border-radius: 16px;
+            margin: 15px 0;
+            text-align: center;
+            width: 100%;
+            font-weight: 500;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .error {
+            background: linear-gradient(135deg, #fecaca, #fca5a5);
+            color: #991b1b;
+            border: 1px solid #fca5a5;
+        }
+
+        .notification {
+            background: linear-gradient(135deg, #bbf7d0, #86efac);
+            color: #166534;
+            border: 1px solid #86efac;
+        }
+
+        /* Responsive design */
+        @media (max-width: 480px) {
+            .login-box {
+                padding: 30px 20px;
+            }
+
+            .login-box h2 {
+                font-size: 24px;
+            }
+
+            .login-box input[type="email"],
+            .login-box input[type="password"],
+            .login-box input[type="text"] {
+                padding: 12px 16px;
+                font-size: 14px;
+            }
+        }
+</style>
+
+</head>
+<body>
+    <div class="login-box">
+        <img src="https://miro.medium.com/v2/resize:fit:327/1*paQ7E6f2VyTKXHpR-aViFg.png" alt="AIML Bot Image">
+        <h2>Login</h2>
+        <form action="/login" method="POST">
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" id="password" name="password" placeholder="Password" required>
+            <div class="show-password-wrapper">
+                <input type="checkbox" id="show-password-login" onclick="togglePassword()">
+                <label for="show-password-login">Show Password</label>
+            </div>
+            <button type="submit">Log In</button>
+        </form>
+
+        {% if request.args.get('success') == 'login' %}
+        <p class="notification">Login successful! Redirecting...</p>
+        {% elif request.args.get('error') == 'invalid' %}
+        <p class="error">Invalid email or password. Please try again or sign up.</p>
+        {% endif %}
+
+        <p>Don't have an account?</p><a class="signup-link" href="/signup">Sign up</a>
+    </div>
+
+    <script>
+        function togglePassword() {
+            var passwordField = document.getElementById("password");
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+            } else {
+                passwordField.type = "password";
+            }
+        }
+    </script>
+</body>
+</html>
