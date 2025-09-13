@@ -123,7 +123,7 @@ Some AIML snippets are © Pema Grg Easy Chatbot (MIT-compatible).
 
 ## ✍️ Authors & Acknowledgments
 
-- Main author: *Your Name*  
+- Main author: *Syed Burhan Ahmed*  
 - Hardware inspiration: ESP32 & Arduino communities  
 - Special thanks: Neo4j & AIML open-source ecosystems
 
